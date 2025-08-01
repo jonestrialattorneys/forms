@@ -1,0 +1,756 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Company Setup Client Intake&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Chosen Palette: Serene Neutrals with Subtle Accents */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--primary-bg: #fdfaf6; /* Light Cream */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--secondary-bg: #f0f0e8; /* Slightly darker cream/off-white */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--text-color: #333333; /* Dark Grey */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--border-color: #d1d5db; /* Light Grey */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--accent-color: #8b5cf6; /* Purple for highlights/buttons */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--accent-hover: #7c3aed; /* Darker Purple for hover */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--progress-active: #8b5cf6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--progress-inactive: #e5e7eb;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--primary-bg);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.form-section {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.form-section.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.progress-dot {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--progress-inactive);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: background-color 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.progress-dot.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--progress-active);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.progress-dot.completed {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--accent-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="text"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="email"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="tel"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="date"],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>textarea {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.75rem 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: border-color 0.2s ease, box-shadow 0.2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="text"]:focus,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="email"]:focus,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="tel"]:focus,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="date"]:focus,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>textarea:focus {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>outline: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: var(--accent-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--accent-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.75rem 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: background-color 0.2s ease, transform 0.1s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--accent-hover);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-1px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button:active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-secondary {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--secondary-bg);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-secondary:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #e0e0d8;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.owner-section {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--secondary-bg);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 0.75rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border-color);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.summary-item {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.75rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.summary-item strong {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.25rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #555;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.summary-item span {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-left: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="min-h-screen flex items-center justify-center p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Application Structure Plan: The application will be structured as a multi-step form, guiding the user through the questionnaire sections one by one. This approach was chosen to break down the potentially lengthy form into manageable chunks, reducing cognitive overload and improving the user experience. A progress indicator (dots) will visually represent the user's progress. Key interactions include "Next" and "Previous" buttons for navigation between sections, an "Add Another Owner" button for dynamic field addition, and a final "Submit" button. This linear flow ensures all necessary information is collected systematically. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Visualization &amp; Content Choices:</p>
+<p class="p1"><span class="Apple-converted-space">    </span>* Client Contact, Proposed Company, EIN Specific, Additional Information:</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Goal: Collect specific textual and categorical data.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Presentation Method: Standard HTML input fields (text, email, tel, textarea, radio buttons, date input).</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Interaction: Direct user input, radio button selection, date picker.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Justification: These are the most direct and intuitive methods for collecting structured data.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Library/Method: Vanilla JS for form state management and input handling; Tailwind CSS for layout and styling.</p>
+<p class="p1"><span class="Apple-converted-space">    </span>* Ownership Information:</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Goal: Collect structured data for a variable number of owners.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Presentation Method: Dynamically added blocks of HTML input fields for each owner.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Interaction: "Add Another Owner" button to append new input blocks; "Remove" button for each owner block.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Justification: This dynamic approach prevents overwhelming the user with too many fields initially while accommodating multiple owners efficiently.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Library/Method: Vanilla JS for DOM manipulation (adding/removing sections); Tailwind CSS for layout and styling.</p>
+<p class="p1"><span class="Apple-converted-space">    </span>* Summary/Review Page:</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Goal: Allow users to review all entered data before final submission.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Presentation Method: Read-only display of all collected data, organized by section.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Interaction: "Edit" button to navigate back to a specific section for corrections; "Submit" button for final submission.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Justification: Enhances data accuracy and user confidence before submission.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* Library/Method: Vanilla JS to populate the summary dynamically; Tailwind CSS for layout and styling.</p>
+<p class="p1"><span class="Apple-converted-space">    </span>* No Chart.js or Plotly.js: The primary purpose of this application is *data collection* from the user, not the visualization of existing data. The source report is a questionnaire, not a data report. Therefore, charts and complex visualizations are not applicable to this specific application's function.</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-2xl"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1 class="text-3xl font-bold text-center mb-6 text-gray-800"&gt;Company Setup Client Intake&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="text-center text-gray-600 mb-8"&gt;Please complete this questionnaire to provide us with the necessary information to set up your company and obtain your Employer Identification Number (EIN) from the IRS.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Progress Indicator --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex justify-center space-x-3 mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-dot active" data-step="0"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-dot" data-step="1"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-dot" data-step="2"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-dot" data-step="3"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-dot" data-step="4"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;form id="clientForm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Section 1: Client Contact Information --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-section active" data-section="0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-6 text-gray-700"&gt;Section 1: Client Contact Information&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="clientName" class="block text-gray-700 text-sm font-medium mb-2"&gt;Your Full Name:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="clientName" name="clientName" class="focus:ring-2" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="clientEmail" class="block text-gray-700 text-sm font-medium mb-2"&gt;Your Email Address:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="email" id="clientEmail" name="clientEmail" class="focus:ring-2" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="clientPhone" class="block text-gray-700 text-sm font-medium mb-2"&gt;Your Phone Number:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="tel" id="clientPhone" name="clientPhone" class="focus:ring-2" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-end mt-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button type="button" onclick="nextStep()" class="px-6 py-3 rounded-lg shadow-md hover:shadow-lg"&gt;Next&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Section 2: Proposed Company Information --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-section" data-section="1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-6 text-gray-700"&gt;Section 2: Proposed Company Information&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="companyName" class="block text-gray-700 text-sm font-medium mb-2"&gt;Proposed Legal Name of the Company (including desired entity designator, e.g., Inc., LLC, Corp.):&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="companyName" name="companyName" class="focus:ring-2" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-500 mt-1"&gt;Example: "Acme Solutions LLC" or "Global Innovations, Inc."&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="block text-gray-700 text-sm font-medium mb-2"&gt;Type of Entity to be Formed:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex flex-col space-y-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="entityType" value="Corporation (C-Corp)" class="form-radio text-accent-color" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;Corporation (C-Corp)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="entityType" value="S-Corporation (S-Corp)" class="form-radio text-accent-color"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;S-Corporation (S-Corp)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="entityType" value="Limited Liability Company (LLC)" class="form-radio text-accent-color"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;Limited Liability Company (LLC)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="entityType" value="Other" class="form-radio text-accent-color" id="entityTypeOtherRadio"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;Other (please specify)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="entityTypeOther" name="entityTypeOther" class="mt-2 hidden focus:ring-2" placeholder="Specify entity type"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="stateFormation" class="block text-gray-700 text-sm font-medium mb-2"&gt;State of Formation (where the company will be legally registered):&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="stateFormation" name="stateFormation" class="focus:ring-2" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="businessPurpose" class="block text-gray-700 text-sm font-medium mb-2"&gt;Primary Business Purpose/Activity of the Company:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;textarea id="businessPurpose" name="businessPurpose" rows="3" class="focus:ring-2" required&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-500 mt-1"&gt;Please provide a brief description of what the company will do.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="registeredAgent" class="block text-gray-700 text-sm font-medium mb-2"&gt;Desired Registered Agent and Registered Office Address (if known and different from your primary business address):&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;textarea id="registeredAgent" name="registeredAgent" rows="2" class="focus:ring-2"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-500 mt-1"&gt;If you need us to provide this service, please indicate "Firm to provide."&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="businessAddress" class="block text-gray-700 text-sm font-medium mb-2"&gt;Primary Business Street Address (where the company will primarily operate):&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;textarea id="businessAddress" name="businessAddress" rows="2" class="focus:ring-2" required&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-500 mt-1"&gt;Street Address, City, State, Zip Code&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="fiscalYearEnd" class="block text-gray-700 text-sm font-medium mb-2"&gt;Company's Fiscal Year End (e.g., December 31, June 30):&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="fiscalYearEnd" name="fiscalYearEnd" class="focus:ring-2" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-500 mt-1"&gt;Most common is December 31.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between mt-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button type="button" onclick="prevStep()" class="btn-secondary px-6 py-3 rounded-lg shadow-md hover:shadow-lg"&gt;Previous&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button type="button" onclick="nextStep()" class="px-6 py-3 rounded-lg shadow-md hover:shadow-lg"&gt;Next&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Section 3: Ownership Information --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-section" data-section="2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-6 text-gray-700"&gt;Section 3: Ownership Information&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="mb-6 text-gray-600"&gt;Please provide information for all owners. Use the "Add Another Owner" button if needed.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="ownersContainer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Owner 1 will be dynamically added here by default --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" onclick="addOwnerSection()" class="btn-secondary mt-4 px-4 py-2 rounded-lg text-sm"&gt;Add Another Owner&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between mt-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button type="button" onclick="prevStep()" class="btn-secondary px-6 py-3 rounded-lg shadow-md hover:shadow-lg"&gt;Previous&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button type="button" onclick="nextStep()" class="px-6 py-3 rounded-lg shadow-md hover:shadow-lg"&gt;Next&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Section 4: EIN Specific Information --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-section" data-section="3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-6 text-gray-700"&gt;Section 4: EIN Specific Information&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="block text-gray-700 text-sm font-medium mb-2"&gt;Reason for Applying for an EIN:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex flex-col space-y-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="einReason" value="Started a new business" class="form-radio text-accent-color" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;Started a new business&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="einReason" value="Hired employees" class="form-radio text-accent-color"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;Hired employees&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="einReason" value="Banking purposes" class="form-radio text-accent-color"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;Banking purposes&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="einReason" value="Changed type of organization" class="form-radio text-accent-color"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;Changed type of organization&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="einReason" value="Other" class="form-radio text-accent-color" id="einReasonOtherRadio"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;Other (please specify)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="einReasonOther" name="einReasonOther" class="mt-2 hidden focus:ring-2" placeholder="Specify reason for EIN"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="block text-gray-700 text-sm font-medium mb-2"&gt;Responsible Party for the EIN Application:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-500 mb-2"&gt;This is the individual who has control over, or is responsible for disbursing, the funds of the entity.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex flex-col space-y-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="responsibleParty" value="Owner 1" class="form-radio text-accent-color" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;Owner 1 (as listed above)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="responsibleParty" value="Owner 2" class="form-radio text-accent-color"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;Owner 2 (as listed above)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="responsibleParty" value="Other" class="form-radio text-accent-color" id="responsiblePartyOtherRadio"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;Other (please specify full name and SSN/ITIN)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;textarea id="responsiblePartyOther" name="responsiblePartyOther" rows="2" class="mt-2 hidden focus:ring-2" placeholder="Full Name and SSN/ITIN"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="businessStartDate" class="block text-gray-700 text-sm font-medium mb-2"&gt;Date Business Started or Acquired:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="date" id="businessStartDate" name="businessStartDate" class="focus:ring-2" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-500 mt-1"&gt;This is the date you intend to begin business operations or when the entity was legally formed.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="block text-gray-700 text-sm font-medium mb-2"&gt;Does the company anticipate having employees within the next 12 months?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex space-x-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="hasEmployees" value="Yes" class="form-radio text-accent-color" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;Yes&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label class="inline-flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="radio" name="hasEmployees" value="No" class="form-radio text-accent-color"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="ml-2 text-gray-700"&gt;No&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5" id="numEmployeesDiv" style="display: none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="numEmployees" class="block text-gray-700 text-sm font-medium mb-2"&gt;If yes, how many employees do you anticipate hiring?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="numEmployees" name="numEmployees" class="focus:ring-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-500 mt-1"&gt;Please specify number of full-time and part-time employees if known.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between mt-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button type="button" onclick="prevStep()" class="btn-secondary px-6 py-3 rounded-lg shadow-md hover:shadow-lg"&gt;Previous&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button type="button" onclick="nextStep()" class="px-6 py-3 rounded-lg shadow-md hover:shadow-lg"&gt;Next&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Section 5: Additional Information &amp; Summary --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-section" data-section="4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-6 text-gray-700"&gt;Section 5: Additional Information &amp; Summary&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="deadlines" class="block text-gray-700 text-sm font-medium mb-2"&gt;Are there any specific deadlines or urgency for the company formation or EIN application?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;textarea id="deadlines" name="deadlines" rows="2" class="focus:ring-2"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="otherInfo" class="block text-gray-700 text-sm font-medium mb-2"&gt;Is there any other information you believe is relevant or important for us to know regarding your company setup?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;textarea id="otherInfo" name="otherInfo" rows="3" class="focus:ring-2"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-semibold mb-4 text-gray-700 mt-8"&gt;Review Your Information&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="summaryContent" class="bg-secondary-bg p-6 rounded-lg border border-border-color"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-600"&gt;Please review the information you have provided below. If anything needs correction, you can go back to previous sections.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between mt-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button type="button" onclick="prevStep()" class="btn-secondary px-6 py-3 rounded-lg shadow-md hover:shadow-lg"&gt;Previous&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button type="submit" class="px-6 py-3 rounded-lg shadow-md hover:shadow-lg"&gt;Submit Information&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/form&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Submission Confirmation Modal --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="confirmationModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white p-8 rounded-lg shadow-xl max-w-sm w-full text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-2xl font-bold text-gray-800 mb-4"&gt;Thank You!&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-gray-700 mb-6"&gt;Your information has been successfully submitted. We will review your responses and be in touch shortly to proceed with your company formation and EIN application.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" onclick="closeModal()" class="px-6 py-3 rounded-lg bg-accent-color text-white hover:bg-accent-hover"&gt;Close&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentStep = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const formSections = document.querySelectorAll('.form-section');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const progressDots = document.querySelectorAll('.progress-dot');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const ownersContainer = document.getElementById('ownersContainer');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let ownerCount = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showStep(step) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>formSections.forEach((section, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>section.classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (index === step) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>section.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateProgressDots(step);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (step === formSections.length - 1) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>generateSummary();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateProgressDots(step) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>progressDots.forEach((dot, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dot.classList.remove('active', 'completed');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (index &lt; step) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dot.classList.add('completed');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else if (index === step) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dot.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function nextStep() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (validateCurrentStep()) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (currentStep &lt; formSections.length - 1) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>currentStep++;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showStep(currentStep);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function prevStep() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentStep &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentStep--;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showStep(currentStep);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function validateCurrentStep() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const currentSection = formSections[currentStep];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const inputs = currentSection.querySelectorAll('input[required], textarea[required], select[required]');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let allValid = true;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>inputs.forEach(input =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!input.value.trim()) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>allValid = false;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>input.style.borderColor = 'red';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>input.style.borderColor = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const radioGroups = {};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentSection.querySelectorAll('input[type="radio"][required]').forEach(radio =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const name = radio.name;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!radioGroups[name]) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>radioGroups[name] = false;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (radio.checked) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>radioGroups[name] = true;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (const groupName in radioGroups) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!radioGroups[groupName]) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>allValid = false;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// Visually indicate required radio group if possible, though harder than text inputs</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!allValid) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// In a real app, you'd show a user-friendly error message</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// For this example, just preventing navigation is enough</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Specific validation for "Other" text fields</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const entityTypeOtherRadio = document.getElementById('entityTypeOtherRadio');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const entityTypeOther = document.getElementById('entityTypeOther');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (entityTypeOtherRadio &amp;&amp; entityTypeOtherRadio.checked &amp;&amp; !entityTypeOther.value.trim()) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>entityTypeOther.style.borderColor = 'red';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>allValid = false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (entityTypeOther) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>entityTypeOther.style.borderColor = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const einReasonOtherRadio = document.getElementById('einReasonOtherRadio');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const einReasonOther = document.getElementById('einReasonOther');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (einReasonOtherRadio &amp;&amp; einReasonOtherRadio.checked &amp;&amp; !einReasonOther.value.trim()) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>einReasonOther.style.borderColor = 'red';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>allValid = false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (einReasonOther) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>einReasonOther.style.borderColor = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const responsiblePartyOtherRadio = document.getElementById('responsiblePartyOtherRadio');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const responsiblePartyOther = document.getElementById('responsiblePartyOther');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (responsiblePartyOtherRadio &amp;&amp; responsiblePartyOtherRadio.checked &amp;&amp; !responsiblePartyOther.value.trim()) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>responsiblePartyOther.style.borderColor = 'red';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>allValid = false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (responsiblePartyOther) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>responsiblePartyOther.style.borderColor = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Validate employee count if 'Yes' is selected</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const hasEmployeesRadios = document.querySelectorAll('input[name="hasEmployees"]');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let hasEmployeesValue = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>hasEmployeesRadios.forEach(radio =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (radio.checked) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>hasEmployeesValue = radio.value;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const numEmployeesInput = document.getElementById('numEmployees');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (hasEmployeesValue === 'Yes' &amp;&amp; !numEmployeesInput.value.trim()) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>numEmployeesInput.style.borderColor = 'red';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>allValid = false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (numEmployeesInput) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>numEmployeesInput.style.borderColor = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Validate owner sections</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentStep === 2) { // Ownership section</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const ownerSections = ownersContainer.querySelectorAll('.owner-section');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (ownerSections.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>allValid = false; // At least one owner required</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>ownerSections.forEach((section, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const ownerInputs = section.querySelectorAll('input[required], textarea[required]');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>ownerInputs.forEach(input =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (!input.value.trim()) {</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>allValid = false;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>input.style.borderColor = 'red';</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>input.style.borderColor = '';</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>return allValid;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function addOwnerSection() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ownerCount++;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const ownerDiv = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ownerDiv.classList.add('owner-section', 'mb-6');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ownerDiv.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-semibold mb-4 text-gray-700"&gt;Owner ${ownerCount}&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="owner${ownerCount}Name" class="block text-gray-700 text-sm font-medium mb-2"&gt;Full Legal Name of Owner ${ownerCount}:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="owner${ownerCount}Name" name="owner${ownerCount}Name" class="focus:ring-2" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="owner${ownerCount}Title" class="block text-gray-700 text-sm font-medium mb-2"&gt;Owner ${ownerCount}'s Title/Role:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="owner${ownerCount}Title" name="owner${ownerCount}Title" class="focus:ring-2" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-500 mt-1"&gt;e.g., Shareholder, Member, President, CEO, Manager&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="owner${ownerCount}Ownership" class="block text-gray-700 text-sm font-medium mb-2"&gt;Owner ${ownerCount}'s Percentage of Ownership / Number of Shares:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="owner${ownerCount}Ownership" name="owner${ownerCount}Ownership" class="focus:ring-2" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="owner${ownerCount}Address" class="block text-gray-700 text-sm font-medium mb-2"&gt;Owner ${ownerCount}'s Street Address:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;textarea id="owner${ownerCount}Address" name="owner${ownerCount}Address" rows="2" class="focus:ring-2" required&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-500 mt-1"&gt;Street Address, City, State, Zip Code&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="owner${ownerCount}SSN" class="block text-gray-700 text-sm font-medium mb-2"&gt;Owner ${ownerCount}'s Social Security Number (SSN) or Individual Taxpayer Identification Number (ITIN):&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="owner${ownerCount}SSN" name="owner${ownerCount}SSN" class="focus:ring-2" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-500 mt-1"&gt;This is required for EIN application.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" onclick="removeOwnerSection(this)" class="btn-secondary text-sm px-3 py-1 rounded-md mt-2"&gt;Remove Owner&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ownersContainer.appendChild(ownerDiv);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function removeOwnerSection(button) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>button.closest('.owner-section').remove();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Re-index owner titles if needed, or just let them be</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function generateSummary() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const summaryContent = document.getElementById('summaryContent');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-gray-600 mb-6"&gt;Please review the information you have provided below. If anything needs correction, you can go back to previous sections.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const formData = new FormData(document.getElementById('clientForm'));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const data = {};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Collect all form data</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let [key, value] of formData.entries()) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (key.startsWith('owner')) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const match = key.match(/owner(\d+)(.*)/);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (match) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const ownerIndex = parseInt(match[1]) - 1;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const fieldName = match[2];</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>if (!data.owners) {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>data.owners = [];</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>if (!data.owners[ownerIndex]) {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>data.owners[ownerIndex] = {};</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>data.owners[ownerIndex][fieldName] = value;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>data[key] = value;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Display Client Contact Info</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;h4 class="text-lg font-semibold mb-2 text-gray-800"&gt;Client Contact Information&lt;/h4&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Your Full Name:&lt;/strong&gt; &lt;span&gt;${data.clientName || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Your Email Address:&lt;/strong&gt; &lt;span&gt;${data.clientEmail || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Your Phone Number:&lt;/strong&gt; &lt;span&gt;${data.clientPhone || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;hr class="my-4 border-gray-300"&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Display Proposed Company Info</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;h4 class="text-lg font-semibold mb-2 text-gray-800"&gt;Proposed Company Information&lt;/h4&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Proposed Legal Name of the Company:&lt;/strong&gt; &lt;span&gt;${data.companyName || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let entityType = data.entityType;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (entityType === 'Other' &amp;&amp; data.entityTypeOther) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>entityType += ` (${data.entityTypeOther})`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Type of Entity to be Formed:&lt;/strong&gt; &lt;span&gt;${entityType || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;State of Formation:&lt;/strong&gt; &lt;span&gt;${data.stateFormation || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Primary Business Purpose/Activity:&lt;/strong&gt; &lt;span&gt;${data.businessPurpose || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Desired Registered Agent and Registered Office Address:&lt;/strong&gt; &lt;span&gt;${data.registeredAgent || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Primary Business Street Address:&lt;/strong&gt; &lt;span&gt;${data.businessAddress || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Company's Fiscal Year End:&lt;/strong&gt; &lt;span&gt;${data.fiscalYearEnd || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;hr class="my-4 border-gray-300"&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Display Ownership Information</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;h4 class="text-lg font-semibold mb-2 text-gray-800"&gt;Ownership Information&lt;/h4&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (data.owners &amp;&amp; data.owners.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data.owners.forEach((owner, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>summaryContent.innerHTML += `&lt;div class="mb-4"&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>summaryContent.innerHTML += `&lt;h5 class="font-medium text-gray-700"&gt;Owner ${index + 1}:&lt;/h5&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Full Legal Name:&lt;/strong&gt; &lt;span&gt;${owner.Name || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Title/Role:&lt;/strong&gt; &lt;span&gt;${owner.Title || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Percentage of Ownership / Shares:&lt;/strong&gt; &lt;span&gt;${owner.Ownership || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Street Address:&lt;/strong&gt; &lt;span&gt;${owner.Address || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;SSN/ITIN:&lt;/strong&gt; &lt;span&gt;${owner.SSN || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>summaryContent.innerHTML += `&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>summaryContent.innerHTML += `&lt;p class="text-gray-600"&gt;No owner information provided.&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;hr class="my-4 border-gray-300"&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Display EIN Specific Information</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;h4 class="text-lg font-semibold mb-2 text-gray-800"&gt;EIN Specific Information&lt;/h4&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let einReason = data.einReason;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (einReason === 'Other' &amp;&amp; data.einReasonOther) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>einReason += ` (${data.einReasonOther})`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Reason for Applying for an EIN:&lt;/strong&gt; &lt;span&gt;${einReason || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let responsibleParty = data.responsibleParty;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (responsibleParty === 'Other' &amp;&amp; data.responsiblePartyOther) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>responsibleParty += ` (${data.responsiblePartyOther})`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Responsible Party for the EIN Application:&lt;/strong&gt; &lt;span&gt;${responsibleParty || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Date Business Started or Acquired:&lt;/strong&gt; &lt;span&gt;${data.businessStartDate || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Anticipate Employees within 12 months?:&lt;/strong&gt; &lt;span&gt;${data.hasEmployees || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (data.hasEmployees === 'Yes') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Number of Employees Anticipated:&lt;/strong&gt; &lt;span&gt;${data.numEmployees || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;hr class="my-4 border-gray-300"&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Display Additional Information</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;h4 class="text-lg font-semibold mb-2 text-gray-800"&gt;Additional Information&lt;/h4&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Specific deadlines or urgency:&lt;/strong&gt; &lt;span&gt;${data.deadlines || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>summaryContent.innerHTML += `&lt;div class="summary-item"&gt;&lt;strong&gt;Other relevant information:&lt;/strong&gt; &lt;span&gt;${data.otherInfo || 'N/A'}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('clientForm').addEventListener('submit', function(event) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>event.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (validateCurrentStep()) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('confirmationModal').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// In a real application, you would send this data to a server here.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// console.log('Form Submitted!', Object.fromEntries(new FormData(this)));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function closeModal() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('confirmationModal').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Optionally reset form or redirect</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('clientForm').reset();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentStep = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ownerCount = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ownersContainer.innerHTML = ''; // Clear dynamically added owners</p>
+<p class="p1"><span class="Apple-converted-space">            </span>addOwnerSection(); // Add back the first owner section</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showStep(currentStep);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Handle "Other" radio button visibility</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const entityTypeOtherRadio = document.getElementById('entityTypeOtherRadio');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const entityTypeOther = document.getElementById('entityTypeOther');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (entityTypeOtherRadio) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>entityTypeOtherRadio.addEventListener('change', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>entityTypeOther.classList.toggle('hidden', !entityTypeOtherRadio.checked);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (entityTypeOtherRadio.checked) entityTypeOther.setAttribute('required', 'true');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>else entityTypeOther.removeAttribute('required');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('input[name="entityType"]').forEach(radio =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>radio.addEventListener('change', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (radio.value !== 'Other' &amp;&amp; entityTypeOther) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>entityTypeOther.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>entityTypeOther.removeAttribute('required');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const einReasonOtherRadio = document.getElementById('einReasonOtherRadio');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const einReasonOther = document.getElementById('einReasonOther');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (einReasonOtherRadio) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>einReasonOtherRadio.addEventListener('change', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>einReasonOther.classList.toggle('hidden', !einReasonOtherRadio.checked);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (einReasonOtherRadio.checked) einReasonOther.setAttribute('required', 'true');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>else einReasonOther.removeAttribute('required');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('input[name="einReason"]').forEach(radio =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>radio.addEventListener('change', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (radio.value !== 'Other' &amp;&amp; einReasonOther) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>einReasonOther.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>einReasonOther.removeAttribute('required');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const responsiblePartyOtherRadio = document.getElementById('responsiblePartyOtherRadio');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const responsiblePartyOther = document.getElementById('responsiblePartyOther');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (responsiblePartyOtherRadio) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>responsiblePartyOtherRadio.addEventListener('change', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>responsiblePartyOther.classList.toggle('hidden', !responsiblePartyOtherRadio.checked);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (responsiblePartyOtherRadio.checked) responsiblePartyOther.setAttribute('required', 'true');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>else responsiblePartyOther.removeAttribute('required');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('input[name="responsibleParty"]').forEach(radio =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>radio.addEventListener('change', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (radio.value !== 'Other' &amp;&amp; responsiblePartyOther) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>responsiblePartyOther.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>responsiblePartyOther.removeAttribute('required');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Handle employee count visibility</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const hasEmployeesRadios = document.querySelectorAll('input[name="hasEmployees"]');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const numEmployeesDiv = document.getElementById('numEmployeesDiv');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const numEmployeesInput = document.getElementById('numEmployees');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>hasEmployeesRadios.forEach(radio =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>radio.addEventListener('change', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (radio.value === 'Yes') {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>numEmployeesDiv.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>numEmployeesInput.setAttribute('required', 'true');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>numEmployeesDiv.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>numEmployeesInput.removeAttribute('required');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>addOwnerSection(); // Add the first owner section on load</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showStep(currentStep); // Initialize the first step</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
